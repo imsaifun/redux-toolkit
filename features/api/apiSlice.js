@@ -1,10 +1,10 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { server } from '../../config';
 
 export const apiSlice = createApi({
     reducerPath: "api",
     // baseQuery: fetchBaseQuery({
-    //     baseUrl: `${server}/api/`,
+    //     baseUrl: "https://server-imsaifun.vercel.app/",
     // }),
     baseQuery: async () => {
         const response = await fetch(`${server}/db.json`)
