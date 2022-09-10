@@ -10,7 +10,6 @@ export default function Home() {
             const data = await sendRequest.json()
             console.log(data);
         }
-
         fetchByCatagory()
 
     }, [])
