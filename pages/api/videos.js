@@ -3,8 +3,7 @@
 export default function handler(req, res) {
     res.status(200).json(
 
-        {
-            "videos": [
+  [
                 {
                     "id": 1,
                     "title": "যে ১০ টি ভুল বিগিনার রিয়্যাক্ট ডেভেলপাররা করে থাকেন",
@@ -83,7 +82,7 @@ export default function handler(req, res) {
                     "thumbnail": "https://i3.ytimg.com/vi/smDa6hoxLKI/maxresdefault.jpg"
                 }
             ]
-        }
+        
 
     )
 }
