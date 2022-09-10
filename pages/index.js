@@ -3,6 +3,7 @@ import { useGetVideosQuery } from "../features/api/apiSlice"
 export default function Home() {
 
     const { data: videos, isLoading, isError } = useGetVideosQuery();
+    // console.log(videos);
     // decide what to render
     let content = null;
 
@@ -24,7 +25,6 @@ export default function Home() {
     return (
         <>
             {content}
-Hello
         </>
     )
 }
