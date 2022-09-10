@@ -4,7 +4,7 @@ import { server } from '../../config'
 export const apiSlice = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({
-        baseUrl: `${server}`,
+        baseUrl: `${server}/api/`,
     }),
     endpoints: (builder) => ({
         getVideos: builder.query({
