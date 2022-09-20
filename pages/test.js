@@ -2,7 +2,8 @@ import React from 'react';
 const data = require('../public/data/db.json')
 
 const Test = () => {
-    console.log(data);
+    // const card = data.data
+    // console.log(card);
     return(
         <div>
             
