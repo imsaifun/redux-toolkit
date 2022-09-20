@@ -10,11 +10,11 @@ export const getPokemons = (pageNumber, pageSize, name, type, subtype) => {
 		const getPoke = async () => {
 			const response = await axios.get(
 				`/data/db.json?page=${pageNumber}&pageSize=${pageSize}&q=%20name:${name}*${type}${subtype}`,
-				{
-					headers: {
-						'X-Api-Key': '11f2cb7b-47e8-4f51-93bc-53c692d0cf9b',
-					},
-				}
+				// {
+				// 	headers: {
+				// 		'X-Api-Key': '11f2cb7b-47e8-4f51-93bc-53c692d0cf9b',
+				// 	},
+				// }
 			);
 			return response.data;
 		};
