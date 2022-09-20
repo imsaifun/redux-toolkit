@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "css": "tailwindcss -i ./public/tailwind/tailwind.css -o ./public/css/style.css --watch"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
@@ -17,7 +18,9 @@
     "react-redux": "^8.0.2"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.11",
     "eslint": "8.23.0",
-    "eslint-config-next": "12.2.5"
+    "eslint-config-next": "12.2.5",
+    "tailwindcss": "^3.1.8"
   }
 }
