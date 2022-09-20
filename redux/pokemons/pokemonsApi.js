@@ -1,7 +1,8 @@
 
 import axios from "../../utils/axios";
 
-export const getPokemons = async(pageNumber, pageSize, name, type, subtype)=>{
-    const response = await axios.get(`/data/db.json/data/?page=${pageNumber}&pageSize=${pageSize}&q=%20name:${name}*${type}${subtype}`)
+export const getPokemons = async()=>{
+    const response = await axios.get(`/data/db.json`)
+    // console.log(response.data);
     return response.data;
 }

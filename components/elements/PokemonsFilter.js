@@ -5,7 +5,7 @@ import { getChosenType, getChosenSubtype, getChosenName } from '../../redux/filt
 const PokemonsFilter = () => {
 	const dispatch = useDispatch();
 	const filterData = useSelector((state) => state.filter);
-	console.log(filterData);
+	// console.log(filterData);
 	const [enteredName, setEnteredName] = useState(filterData.name);
 
 	useEffect(() => {
