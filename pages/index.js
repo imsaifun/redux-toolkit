@@ -1,30 +1,25 @@
-import Video from "../components/Video";
-import { useGetVideosQuery } from "../features/api/apiSlice"
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPokemons } from '../redux/pokemons/pokemons';
+
 export default function Home() {
 
-    const { data: videos, isLoading, isError } = useGetVideosQuery();
-    // console.log(videos);
-    // decide what to render
-    let content = null;
 
-    if (isLoading) {
-        content = "Loading"
-    }
+    const dispatch = useDispatch()
 
-    if (!isLoading && isError) {
-        content = "There was an error";
-    }
+    const { pokemons, isLoading, isError, error } = useSelector(state => state.pokemons)
 
-    if (!isLoading && !isError && videos?.length === 0) {
-        content = "No videos found!";
-    }
+    console.log(pokemons);
+    
+    useEffect(() => {
+        dispatch(fetchPokemons())
+    }, [dispatch])
 
-    if (!isLoading && !isError && videos?.length > 0) {
-        content = videos.map((video) => <Video key={video.id} video={video} />);
-    }
+
     return (
         <>
-            {content}
+
+
         </>
     )
 }
