@@ -1,46 +1,53 @@
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Loading from '../components/elements/Loading';
-import PokemonItem from '../components/elements/PokemonItem';
-import PokemonsFilter from '../components/elements/PokemonsFilter';
-import { fetchPokemons } from '../redux/pokemons/pokemons';
+import PokemonsFilter from '../components/Filter/PokemonsFilter';
+import PerPage from '../components/Filter/PerPage';
+import PokemonList from '../components/Pokemons/PokemonList';
+import Layout from '../components/Layout/Layout';
+import {
+    getAllPokeSubtypes, getAllPokeTypes, getPokemons
+} from '../store/pokemon-actions';
 
-export default function Home() {
+function Home() {
+	const dispatch = useDispatch();
+	const pokeData = useSelector((state) => state.pokemons);
+	const filterData = useSelector(state => state.filter)
 
+	useEffect(() => {
+		dispatch(getAllPokeTypes());
+		dispatch(getAllPokeSubtypes());
+	}, [dispatch]);
 
-    const dispatch = useDispatch()
+	// useEffect(() => {
+	// 	localStorage.setItem('pokeApp-fav', JSON.stringify(pokeData.favPokemons));
+	// }, [pokeData.favPokemons]);
 
-    const { pokemons, isLoading, isError, error } = useSelector(state => state.pokemons)
+	useEffect(() => {
+		dispatch(
+			getPokemons(
+				filterData.currentPage,
+				filterData.pageSize,
+				filterData.name,
+				filterData.chosenType,
+				filterData.chosenSubtype
+			)
+		);
+	}, [
+		dispatch,
+		filterData.currentPage,
+		filterData.pageSize,
+		filterData.name,
+		filterData.chosenType,
+		filterData.chosenSubtype,
+	]);
 
-    // console.log(pokemons);
-
-    useEffect(() => {
-        dispatch(fetchPokemons())
-    }, [dispatch])
-
-    let content;
-    if (isLoading) content = <Loading />
-    if (!isLoading && isError) content = <div className="col-span-12">{error}</div>
-    if (!isLoading && !isError && pokemons.data?.length === 0) {
-        content = <div className="col-span-12">No pokemons Found</div>
-    }
-    if (!isLoading && !isError && pokemons.data?.length > 0) {
-        content = pokemons.data.map((pokemon, i) => (
-            <PokemonItem pokemon={pokemon} key={i} />
-        ))
-    }
-
-    return (
-        <>
-            <section className="container mx-auto pt-12">
-                <PokemonsFilter/>
-                <div className="pt-12">
-                    <div className="grid grid-cols-6 gap-5">
-                        {content}                        
-                    </div>
-                </div>
-            </section>
-
-        </>
-    )
+	return (
+		<Layout>
+			<PokemonsFilter />
+			<PerPage />
+			<PokemonList />
+		</Layout>
+	);
 }
+
+export default Home;

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getChosenType, getChosenSubtype, getChosenName } from '../../redux/filter/filter';
+import { getChosenType, getChosenSubtype, getChosenName } from '../../store/pokemon-actions';
+// import './PokemonsFilter.scss';
 
 const PokemonsFilter = () => {
 	const dispatch = useDispatch();
 	const filterData = useSelector((state) => state.filter);
-	// console.log(filterData);
 	const [enteredName, setEnteredName] = useState(filterData.name);
 
 	useEffect(() => {
