@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import Loading from '../components/elements/Loading';
 import PokemonItem from '../components/elements/PokemonItem';
+import PokemonsFilter from '../components/elements/PokemonsFilter';
 import { fetchPokemons } from '../redux/pokemons/pokemons';
 
 export default function Home() {
@@ -32,11 +33,12 @@ export default function Home() {
     return (
         <>
             <section className="container mx-auto pt-12">
-                <section className="pt-12">
+                <PokemonsFilter/>
+                <div className="pt-12">
                     <div className="grid grid-cols-6 gap-5">
                         {content}                        
                     </div>
-                </section>
+                </div>
             </section>
 
         </>

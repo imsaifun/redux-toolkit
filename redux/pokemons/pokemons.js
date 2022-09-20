@@ -11,8 +11,8 @@ const initialState = {
 
 // async thunk
 export const fetchPokemons = createAsyncThunk('pokemons/fetchPokemons',
-    async () => {
-        const pokemons = await getPokemons()
+    async ({pageNumber, pageSize, name, type, subtype}) => {
+        const pokemons = await getPokemons(pageNumber, pageSize, name, type, subtype)
         return pokemons;
     })
 

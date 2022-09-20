@@ -3,7 +3,6 @@ import React from 'react';
 
 const PokemonItem = ({ pokemon = {} }) => {
     const { id, artist, images, name } = pokemon;
-    console.log(pokemon);
     return (
         <>
 
