@@ -1,14 +1,15 @@
 import axios from 'axios';
 import { filterActions } from './filter-slice';
 import { pokemonActions } from './pokemon-slice';
+import server from "../config"
 
 export const getPokemons = (pageNumber, pageSize, name, type, subtype) => {
 	return async (dispatch) => {
 		dispatch(pokemonActions.getPokemonsRequest());
 
-		const getPoke = async () => { 
+		const getPoke = async () => {
 			const response = await axios.get(
-				`https://api.pokemontcg.io/v2/cards?page=${pageNumber}&pageSize=${pageSize}&q=%20name:${name}*${type}${subtype}`,
+				`/data/db.json?page=${pageNumber}&pageSize=${pageSize}&q=%20name:${name}*${type}${subtype}`,
 				{
 					headers: {
 						'X-Api-Key': '11f2cb7b-47e8-4f51-93bc-53c692d0cf9b',
