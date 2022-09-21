@@ -8,7 +8,7 @@ function Home() {
 	const dispatch = useDispatch()
 
 	const { products, isLoading, isError, error } = useSelector(state => state.products)
-	// console.log(products);
+	console.log(products);
 	const { tags, search } = useSelector((state) => state.filter);
 
 	useEffect(() => {
@@ -18,11 +18,11 @@ function Home() {
 	let content;
 	if (isLoading) content = "Loading"
 	if (!isLoading && isError) content = <div className="col-span-12">{error}</div>
-	if (!isLoading && !isError && products.data?.length === 0) {
+	if (!isLoading && !isError && products?.length === 0) {
 		content = <div className="col-span-12">No products Found</div>
 	}
-	if (!isLoading && !isError && products.data?.length > 0) {
-		content = products.data.map((product, i) => (
+	if (!isLoading && !isError && products?.length > 0) {
+		content = products.map((product, i) => (
 			<ProductItem product={product} key={i} />
 		))
 	}
