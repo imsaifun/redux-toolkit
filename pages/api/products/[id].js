@@ -1,56 +1,56 @@
 import dbConnect from '../../../dbConnect'
-import Product from '../../../models/product'
+import Order from '../../../models/product'
 
 export default async function handler(req, res) {
-    const {
-        query: { id },
-        method,
-    } = req
+  const {
+    query: { id },
+    method,
+  } = req
 
-    await dbConnect()
+  await dbConnect()
 
-    switch (method) {
-        case 'GET' /* Get a model by its ID */:
-            try {
-                const product = await Product.findById(id)
-                if (!product) {
-                    return res.status(400).json({ success: false })
-                }
-                res.status(200).json({ success: true, data: product })
-            } catch (error) {
-                res.status(400).json({ success: false })
-            }
-            break
+  switch (method) {
+    case 'GET' /* Get a model by its ID */:
+      try {
+        const order = await Order.findById(id)
+        if (!order) {
+          return res.status(400).json({ success: false })
+        }
+        res.status(200).json({ success: true, data: order })
+      } catch (error) {
+        res.status(400).json({ success: false })
+      }
+      break
 
-        case 'PUT' /* Edit a model by its ID */:
-            try {
-                const product = await Product.findByIdAndUpdate(id, req.body, {
-                    new: true,
-                    // runValidators: true,
-                })
-                if (!product) {
-                    return res.status(400).json({ success: false })
-                }
-                res.status(200).json({ success: true, data: product })
-            } catch (error) {
-                res.status(400).json({ success: false })
-            }
-            break
+    case 'PUT' /* Edit a model by its ID */:
+      try {
+        const order = await Order.findByIdAndUpdate(id, req.body, {
+          new: true,
+          runValidators: true,
+        })
+        if (!order) {
+          return res.status(400).json({ success: false })
+        }
+        res.status(200).json({ success: true, data: order })
+      } catch (error) {
+        res.status(400).json({ success: false })
+      }
+      break
 
-        case 'DELETE' /* Delete a model by its ID */:
-            try {
-                const deletedproduct = await Product.deleteOne({ _id: id })
-                if (!deletedproduct) {
-                    return res.status(400).json({ success: false })
-                }
-                res.status(200).json({ success: true, data: {} })
-            } catch (error) {
-                res.status(400).json({ success: false })
-            }
-            break
+    case 'DELETE' /* Delete a model by its ID */:
+      try {
+        const deletedorder = await Order.deleteOne({ _id: id })
+        if (!deletedorder) {
+          return res.status(400).json({ success: false })
+        }
+        res.status(200).json({ success: true, data: {} })
+      } catch (error) {
+        res.status(400).json({ success: false })
+      }
+      break
 
-        default:
-            res.status(400).json({ success: false })
-            break
-    }
+    default:
+      res.status(400).json({ success: false })
+      break
+  }
 }
