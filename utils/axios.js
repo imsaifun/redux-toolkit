@@ -1,5 +1,7 @@
 import axios from "axios";
-import { server } from '../config'
+
+const dev = process.env.NODE_ENV !== "production";
+const server = dev ? "http://localhost:3000" : "https://redux.imsaifun.com/";
 
 const axiosInstance = axios.create({
     baseURL: `${server}/api`,
