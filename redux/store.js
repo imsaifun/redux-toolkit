@@ -1,16 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
-// import tagsReducer from "./tags/tags"
+import tagsReducer from "./tags/tags"
 import productsReducer from "./products/products"
 // import videoReducer from "./video/video"
-// import filterReducer from "./filter/filter"
+import filterReducer from "./filter/filter"
 // import relatedVideosReducer from "./relatedVideos/relatedVideos"
 
 export const store = configureStore({
   reducer: {
     products: productsReducer,
     // video: videoReducer,
-    // tags: tagsReducer,
+    tags: tagsReducer,
     // relatedVideos: relatedVideosReducer,
-    // filter:filterReducer
+    filter:filterReducer
   },
 });

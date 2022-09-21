@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProductItem from "../components/ProductItem";
+import Tags from "../components/Tags";
 import { fetchProducts } from "../redux/products/products";
 
 function Home() {
@@ -28,12 +29,12 @@ function Home() {
 
 	return (
 		<>
-
-				<section className="pt-12">
-					<div className="grid grid-cols-12 gap-4 max-w-7xl mx-auto px-5 lg:px-0 min-h-[300px]">
-						{content}
-					</div>
-				</section>
+			<Tags />
+			<section className="pt-12">
+				<div className="grid grid-cols-12 gap-4 max-w-7xl mx-auto px-5 lg:px-0 min-h-[300px]">
+					{content}
+				</div>
+			</section>
 		</>
 	);
 }

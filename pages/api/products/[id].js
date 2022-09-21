@@ -1,5 +1,5 @@
 import dbConnect from '../../../dbConnect'
-import Order from '../../../models/product'
+import Product from '../../../models/product'
 
 export default async function handler(req, res) {
   const {
@@ -12,11 +12,11 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET' /* Get a model by its ID */:
       try {
-        const order = await Order.findById(id)
-        if (!order) {
+        const product = await Product.findById(id)
+        if (!product) {
           return res.status(400).json({ success: false })
         }
-        res.status(200).json({ success: true, data: order })
+        res.status(200).json({ success: true, data: product })
       } catch (error) {
         res.status(400).json({ success: false })
       }
@@ -24,14 +24,14 @@ export default async function handler(req, res) {
 
     case 'PUT' /* Edit a model by its ID */:
       try {
-        const order = await Order.findByIdAndUpdate(id, req.body, {
+        const product = await Product.findByIdAndUpdate(id, req.body, {
           new: true,
           runValidators: true,
         })
-        if (!order) {
+        if (!product) {
           return res.status(400).json({ success: false })
         }
-        res.status(200).json({ success: true, data: order })
+        res.status(200).json({ success: true, data: product })
       } catch (error) {
         res.status(400).json({ success: false })
       }
@@ -39,8 +39,8 @@ export default async function handler(req, res) {
 
     case 'DELETE' /* Delete a model by its ID */:
       try {
-        const deletedorder = await Order.deleteOne({ _id: id })
-        if (!deletedorder) {
+        const deletedProduct = await Product.deleteOne({ _id: id })
+        if (!deletedProduct) {
           return res.status(400).json({ success: false })
         }
         res.status(200).json({ success: true, data: {} })

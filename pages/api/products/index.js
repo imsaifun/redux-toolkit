@@ -1,5 +1,5 @@
 import dbConnect from '../../../dbConnect'
-import Order from '../../../models/product'
+import Product from '../../../models/product'
 
 export default async function handler(req, res) {
   const { method } = req
@@ -9,18 +9,18 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
-        const orders = await Order.find({}) /* find all the data in our database */
-        res.status(200).json({ success: true, data: orders })
+        const products = await Product.find({}) /* find all the data in our database */
+        res.status(200).json({ success: true, data: products })
       } catch (error) {
         res.status(400).json({ success: false })
       }
       break
     case 'POST':
       try {
-        const order = await Order.create(
+        const product = await Product.create(
           req.body
         ) /* create a new model in the database */
-        res.status(201).json({ success: true, data: order })
+        res.status(201).json({ success: true, data: product })
       } catch (error) {
         res.status(400).json({ success: false })
       }
@@ -30,25 +30,3 @@ export default async function handler(req, res) {
       break
   }
 }
-
-// export default async function handler(req, res) {
-//   await dbConnect();
-
-//   const { title, desc, prices } = req.body;
-
-//   if (req.method === "POST") {
-//     const orderExist = await Order.findOne({ title });
-
-//     if (orderExist)
-//       return res.status(422).json({ message: "title already in use!" });
-
-//     const order = new order({ title, desc, prices});
-//     await Order.save();
-
-   
-
-//     res.status(201).json(order);
-//   } else {
-//     res.status(424).json({ message: "Invalid method!" });
-//   }
-// }
