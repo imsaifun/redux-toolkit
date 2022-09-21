@@ -3,6 +3,8 @@ import Product from '../../../models/product'
 
 export default async function handler(req, res) {
   const { method } = req
+  const query = req.query;
+  const { page, limit } = query;
 
   await dbConnect()
 

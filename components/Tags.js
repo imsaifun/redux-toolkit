@@ -26,7 +26,7 @@ const Tags = () => {
 
             {tags.data?.length > 0 ? <section>
                 <div className="max-w-7xl mx-auto px-5 py-6 lg:px-0 flex gap-2 border-b overflow-y-auto">
-                    {tags.data.map(tag => <Tag key={tag.id} title={tag.title} />)}
+                    {tags.data.map(tag => <Tag key={tag._id} title={tag.title} />)}
 
                 </div>
             </section> : null}
