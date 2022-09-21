@@ -1,15 +1,29 @@
-import mongoose from "mongoose"
+import mongoose from 'mongoose';
 
-const dbConnect = async () => {
-  if (mongoose.connection.readyState >= 1) {
-    return
-  }
-  mongoose
-    .connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
-    .then((con) => console.log("connected to DB"))
+let cached = global.mongoose;
+
+if(!cached){
+    cached = global.mongoose = {conn: null, promise: null};
 }
 
-export default dbConnect
+const dbConnect = async ()=>{
+    if(cached.conn){
+        return cached.conn;
+    }
+    if(!cached.promise){
+        const options = {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            bufferCommands: false,
+            bufferCommands: false,
+        };
+        cached.promise = mongoose.connect(process.env.MONGODB_URI, options).then(mongoose=>{
+            return mongoose;
+        });
+    }
+    
+    cached.conn = await cached.promise;
+    return cached.conn;
+}
+
+export default dbConnect;
