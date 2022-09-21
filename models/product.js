@@ -2,19 +2,115 @@ import mongoose from "mongoose";
 
 const ProductSchema = new mongoose.Schema(
     {
-        title: {
+        jobTitle: {
             type: String,
-            required: true,
-            // maxlength: 60,
+        },
+        companyLogo: {
+            type: String,
+        },
+        companyTitle: {
+            type: String,
+        },
+        companyLocation: {
+            type: String,
+        },
+        companyEstablish: {
+            type: String,
+        },
+        companySize: {
+            type: [
+                {
+                    min: {
+                        type: Number,
+                        required: true
+                    },
+                    max: {
+                        type: Number,
+                        required: true
+                    },
+                },
+            ],
+        },
+        // companySize: {
+        //     type: Number,
+        //     min: 0,
+        //     max: 5
+        // },
+        companyEmail: {
+            type: String,
+        },
+        companyUrl: {
+            type: String,
         },
         desc: {
             type: String,
-            required: true,
-            // maxlength: 200,
         },
-        img: {
+        country: {
             type: String,
-            required: true,
+        },
+        industry: {
+            type: String,
+        },
+        postedTime: {
+            type: String,
+        },
+        salary: {
+            type: [
+                {
+                    min: {
+                        type: Number,
+                        required: true
+                    },
+                    max: {
+                        type: Number,
+                        required: true
+                    },
+                },
+            ],
+        },
+        jobType: {
+            type: String,
+        },
+        hourlyRate: {
+            type: Number,
+            required: true
+        },
+        jobLevel: {
+            type: String,
+        },
+        experience: {
+            type: Number,
+        },
+        deadline: {
+            type: String,
+        },
+        position: {
+            type: String,
+        },
+        onsiteRemote: {
+            type: String,
+        },
+        tags: {
+            type: [
+                {
+                    type: String,
+                    required: true
+                },
+            ],
+        },
+        skills: {
+            type: [
+                {
+                    type: String,
+                    required: true
+                },
+            ],
+        },
+        featured: {
+            type: Boolean,
+        },
+        trending: {
+            type: Boolean,
         },
         // rating: {
         //     type: Number,
