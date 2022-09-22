@@ -7,7 +7,7 @@ import Tag from './Tag';
 const Tags = () => {
 
     const { tags } = useSelector((state) => state.tags)
-    console.log(tags);
+    // console.log(tags);
 
     const dispatch = useDispatch()
 
