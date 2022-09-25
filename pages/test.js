@@ -1,13 +1,12 @@
 import React from 'react';
 
-const Test = () => {
-    // const card = data.data
-    // console.log(card);
-    return(
+const test = () => {
+    return (
         <div>
-            
+
         </div>
     );
 };
 
-export default Test;
+export default test;
+
